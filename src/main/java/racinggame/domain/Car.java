@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.domain;
 
 public class Car {
     private static final int MOVE_POINT = 4;
@@ -6,6 +6,10 @@ public class Car {
     private int position;
 
     public Car(String name) {
+        if (name.length() < 0 || name.length() > 5) {
+            throw new IllegalArgumentException();
+        }
+
         this.name = name;
         this.position = 0;
     }

@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.domain;
 
 import racinggame.view.ResultOutput;
 
