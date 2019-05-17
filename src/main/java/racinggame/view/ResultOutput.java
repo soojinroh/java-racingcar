@@ -22,4 +22,20 @@ public class ResultOutput {
 
         System.out.println();
     }
+
+    public static void eachGameOutputWithOutToString(List<Car> cars) {
+        StringBuilder eachGameResult = new StringBuilder();
+
+        for (Car car : cars) {
+            eachGameResult.append(car.getName());
+            eachGameResult.append(" : ");
+
+            for (int i = 0; i < car.getPosition(); i++) {
+                eachGameResult.append("-");
+            }
+            eachGameResult.append("\n");
+        }
+
+        System.out.println(eachGameResult.toString());
+    }
 }
