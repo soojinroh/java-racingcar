@@ -6,24 +6,27 @@ import java.util.List;
 public class Winner {
 
     private List<String> winners = new ArrayList<>();
-    private int maxPosition = -1;
 
     public Winner(List<Car> cars) {
-        for (int i = 0; i < cars.size(); i++) {
-            judgeWinner(cars.get(i).getPosition(), cars.get(i).getName());
+        int maxDistance = judgeMaxDistance(cars);
+
+        for (Car car : cars) {
+            if (car.isMatch(maxDistance)) {
+                winners.add(car.getName());
+            }
         }
     }
 
-    private void judgeWinner(int carPosition, String carName) {
-        if (carPosition == maxPosition)  {
-            winners.add(carName);
+    private int judgeMaxDistance(List<Car> cars) {
+        int maxDistance = 0;
+
+        for (Car car : cars) {
+            if (car.getPosition() > maxDistance ) {
+                maxDistance = car.getPosition();
+            }
         }
 
-        if (carPosition > this.maxPosition) {
-            this.maxPosition = carPosition ;
-            winners.clear();
-            winners.add(carName);
-        }
+        return maxDistance;
     }
 
     public List<String> getWinners() {
